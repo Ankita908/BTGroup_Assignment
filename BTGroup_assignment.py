@@ -10,6 +10,20 @@ driver = webdriver.Chrome()
 driver.get("https://www.bt.com/")
 driver.maximize_window()
 
+
+'''Using the XPATH "//a[@class='call' and text()='Accept all cookies']" for "Accept all cookies" button locator, 
+its is detected in DOM element but not via selenium.
+Throws error as :
+File "C:\Users\ankita.ghosh\PycharmProjects\BTGroup\PageObject\HomePage.py", line 14, in <module>
+    alert_popup = driver.find_element(By.XPATH, "//a[@class='call' and text()='Accept all cookies']")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ankita.ghosh\PycharmProjects\BTGroup\venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 738, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Hence, while runnig the code I have manually accepted the "Accept all cookies" button so that other TC's can be executed.
+Below is the idea how we can click the element.
+'''
 # 1.Close accept Cookie pop-up if it appears
 try:
     # Wait for the element to be clickable (max 10 seconds)
